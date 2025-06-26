@@ -2,13 +2,13 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ACME Launch Day Feedback</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formulaire ACME - Design BG</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: url('Capture_d_écran_2025-06-26_à_15.20.03.png') no-repeat center center fixed;
+      background: url('téléchargement.jpeg') no-repeat center center fixed;
       background-size: cover;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
@@ -18,12 +18,12 @@
     }
 
     .form-container {
-      background-color: rgba(255, 255, 255, 0.96);
+      background-color: rgba(255, 255, 255, 0.94);
       padding: 40px;
       border-radius: 20px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
       max-width: 700px;
-      width: 100%;
+      width: 90%;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(4px);
     }
 
@@ -61,11 +61,6 @@
       margin-bottom: 12px;
     }
 
-    .checkbox-group label,
-    .radio-group label {
-      font-weight: normal;
-    }
-
     .submit-button {
       margin-top: 30px;
       background-color: #7D4CDB;
@@ -75,7 +70,6 @@
       border-radius: 10px;
       font-size: 1.1em;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
 
     .submit-button:hover {
@@ -95,12 +89,12 @@
 <body>
   <form class="form-container">
     <div class="notice">
-      Veuillez noter que ceci est un aperçu. Vous ne pouvez pas répondre à cette enquête.
+      Ceci est un aperçu de formulaire. Merci de ne pas répondre.
     </div>
 
     <h2>Donnez-nous votre avis concernant le ACME Launch Day !</h2>
 
-    <label>Comment évaluez-vous globalement l’événement ? (sur une note de 1 à 5)</label>
+    <label>Note globale de l’événement (1 à 5)</label>
     <select>
       <option disabled selected>Choisissez une note</option>
       <option>1</option>
@@ -110,7 +104,7 @@
       <option>5</option>
     </select>
 
-    <label>Les présentations de l’application mobile étaient-elles claires et compréhensibles ?</label>
+    <label>Les présentations étaient-elles claires ?</label>
     <div class="radio-group">
       <label><input type="radio" name="clarity"> Tout à fait d’accord</label>
       <label><input type="radio" name="clarity"> D’accord</label>
@@ -119,25 +113,25 @@
       <label><input type="radio" name="clarity"> Pas du tout d’accord</label>
     </div>
 
-    <label>Quelles sessions avez-vous trouvées les plus intéressantes ? (max. 2 réponses)</label>
+    <label>Sessions les plus intéressantes ? (max 2)</label>
     <div class="checkbox-group">
-      <label><input type="checkbox"> La présentation de l’application</label>
-      <label><input type="checkbox"> Le démo de l’application</label>
-      <label><input type="checkbox"> Le workshop</label>
-      <label><input type="checkbox"> La table ronde</label>
-      <label><input type="checkbox"> Les sessions questions/réponses</label>
+      <label><input type="checkbox"> Présentation</label>
+      <label><input type="checkbox"> Démo</label>
+      <label><input type="checkbox"> Workshop</label>
+      <label><input type="checkbox"> Table ronde</label>
+      <label><input type="checkbox"> Q&A</label>
     </div>
 
-    <label>Quel est votre niveau d’intérêt pour l’application ACME ?</label>
+    <label>Niveau d’intérêt pour l’application ACME ?</label>
     <div class="radio-group">
-      <label><input type="radio" name="interest"> Très intéressé(e), je souhaite être informé(e)</label>
+      <label><input type="radio" name="interest"> Très intéressé(e)</label>
       <label><input type="radio" name="interest"> Intéressé(e)</label>
-      <label><input type="radio" name="interest"> Moyennement intéressé(e)</label>
-      <label><input type="radio" name="interest"> Peu intéressé(e)</label>
-      <label><input type="radio" name="interest"> Pas du tout intéressé(e)</label>
+      <label><input type="radio" name="interest"> Moyen</label>
+      <label><input type="radio" name="interest"> Peu</label>
+      <label><input type="radio" name="interest"> Pas du tout</label>
     </div>
 
-    <label>L’organisation de l’événement (accueil, timing, logistique) était-elle satisfaisante ?</label>
+    <label>Organisation de l’événement ?</label>
     <div class="radio-group">
       <label><input type="radio" name="orga"> Très satisfaisante</label>
       <label><input type="radio" name="orga"> Satisfaisante</label>
@@ -146,16 +140,16 @@
       <label><input type="radio" name="orga"> Pas du tout satisfaisante</label>
     </div>
 
-    <label>Recommanderiez-vous cet événement à un collègue ?</label>
+    <label>Recommanderiez-vous cet événement ?</label>
     <div class="radio-group">
       <label><input type="radio" name="recommend"> Oui</label>
       <label><input type="radio" name="recommend"> Non</label>
     </div>
 
-    <label>Que pourrait-on améliorer pour les prochains événements ?</label>
+    <label>Améliorations ?</label>
     <input type="text" placeholder="Votre réponse">
 
-    <label>Commentaire libre (vos suggestions, remarques ou félicitations...)</label>
+    <label>Commentaires</label>
     <textarea placeholder="Exprimez-vous librement..."></textarea>
 
     <button class="submit-button" type="button">Envoyer</button>
