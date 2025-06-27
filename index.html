@@ -1,158 +1,392 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Formulaire ACME - Design BG</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: url('bg.jpeg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    .form-container {
-      background-color: rgba(255, 255, 255, 0.94);
-      padding: 40px;
-      border-radius: 20px;
-      max-width: 700px;
-      width: 90%;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(4px);
-    }
-
-    h2 {
-      margin-top: 0;
-      color: #2c3e50;
-    }
-
-    label, p {
-      display: block;
-      margin: 16px 0 6px;
-      color: #34495e;
-    }
-
-    input[type="text"],
-    textarea,
-    select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 1em;
-      box-sizing: border-box;
-    }
-
-    textarea {
-      min-height: 100px;
-    }
-
-    .checkbox-group,
-    .radio-group {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      margin-bottom: 12px;
-    }
-
-    .submit-button {
-      margin-top: 30px;
-      background-color: #7D4CDB;
-      color: white;
-      border: none;
-      padding: 14px 28px;
-      border-radius: 10px;
-      font-size: 1.1em;
-      cursor: pointer;
-    }
-
-    .submit-button:hover {
-      background-color: #5e35b1;
-    }
-
-    .notice {
-      background: #fff3cd;
-      color: #856404;
-      padding: 10px 20px;
-      border-radius: 10px;
-      border: 1px solid #ffeeba;
-      margin-bottom: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi des pages LinkedIn d'entreprises</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0077B5;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        button {
+            background-color: #0077B5;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #005885;
+        }
+        .export-btn {
+            background-color: #28a745;
+        }
+        .export-btn:hover {
+            background-color: #218838;
+        }
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .stat-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            min-width: 120px;
+        }
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0077B5;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #0077B5;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f0f8ff;
+        }
+        .url-input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .status-found {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        .status-notfound {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .search-btn {
+            background-color: #17a2b8;
+            font-size: 12px;
+            padding: 5px 8px;
+        }
+        .linkedin-url {
+            color: #0077B5;
+            text-decoration: none;
+        }
+        .linkedin-url:hover {
+            text-decoration: underline;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #28a745;
+            transition: width 0.3s ease;
+        }
+        .search-box {
+            margin-bottom: 15px;
+        }
+        .search-input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 300px;
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0077B5;
+        }
+    </style>
 </head>
 <body>
-  <form class="form-container">
-    <div class="notice">
-      Ceci est un aperçu de formulaire. Merci de ne pas répondre.
+    <div class="container">
+        <h1>📊 Suivi des pages LinkedIn d'entreprises</h1>
+        
+        <div class="instructions">
+            <h3>📋 Instructions d'utilisation :</h3>
+            <ul>
+                <li><strong>Recherche automatique :</strong> Cliquez sur "Générer URL" pour créer une URL LinkedIn approximative</li>
+                <li><strong>Vérification manuelle :</strong> Copiez-collez les vraies URLs LinkedIn après vérification</li>
+                <li><strong>Recherche Google :</strong> Utilisez "Rechercher sur Google" pour une recherche ciblée</li>
+                <li><strong>Export :</strong> Exportez vos données en CSV pour les importer dans votre tableur</li>
+            </ul>
+        </div>
+
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number" id="totalCount">0</div>
+                <div>Total</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="foundCount">0</div>
+                <div>Trouvées</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="pendingCount">0</div>
+                <div>En attente</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="progressPercent">0%</div>
+                <div>Progression</div>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" class="search-input" placeholder="Rechercher une entreprise...">
+        </div>
+
+        <div class="controls">
+            <button onclick="generateAllUrls()">🔗 Générer toutes les URLs</button>
+            <button onclick="exportToCSV()" class="export-btn">📊 Exporter en CSV</button>
+            <button onclick="copyFormulas()">📋 Copier formules Excel</button>
+            <button onclick="resetAll()">🔄 Réinitialiser</button>
+        </div>
+
+        <table id="companiesTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom de l'entreprise</th>
+                    <th>URL LinkedIn</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
     </div>
 
-    <h2>Donnez-nous votre avis concernant le ACME Launch Day !</h2>
+    <script>
+        const companies = [
+            "BNP Paribas Corporate & Institutional banking (CIB)", "Orange Business (OB)", "Michelin", "Orange Labs", "Crédit Coopératif", "PYC", "UGAP", "EDF Energy Customers Plc", "CMA CGM", "Outscale SAS", "Comité d'organisation des Jeux Olympiques et Paralympiques de Paris 2024", "ISAGRI", "GROUPE LES ECHOS LE PARISIEN", "Coface", "MANIFESTORY", "Trescal", "BCG", "EUROTUNNEL", "Infopro digital", "CHANEL", "SOFTWAY MEDICAL", "Gesec", "ICE EVENTS", "SFR", "MEDECINE RELATIONNELLE", "C.R.A.", "BOEHRINGER INGELHEIM", "GROUPE CCPA", "Centre Inffo", "BRIGITTE CELEYRON EVENEMENTS", "Red Bull France", "Bouygues Immobilier", "La Franco American Image", "SNCF Groupe", "WEBEDIA", "Corp. De L'Ecole Des Hautes Etudes Commerciales De Montreal", "Air France", "Groupe BERTO", "Mr.Bricolage", "Decathlon", "EVIMAGES", "WE LIVE YOU", "Wavestone", "Groupe IGS", "EDF Luminus", "Vivendi Sports", "Phenomene", "EGG Events", "Sigfox", "SFRP", "Radio France", "Chateauform'", "SANOFI", "Accor Hotels", "bioMérieux", "JumpIn Paris", "LCL", "EM Normandie", "CAPITALCOM EVENTS", "Groupe BPCE", "BVI Medical", "Intelcia", "AT INTERNET", "ENEDIS", "mrs.aero", "JVS-MAIRISTEM", "sportpack", "Securitas", "MACIF", "UFR STAPS de Nantes - Université de Nantes", "Advanta", "TOTAL", "Université de Lorraine", "Events creation", "Prosol", "Banque de France", "Roche Diabetes Care France", "Crédit Agricole Guadeloupe", "Public Address", "Mars Incorporated", "CCI 74", "OGF", "SMC Groupe", "Citec Italy", "VLcommunication", "Médecins Sans Frontières Belgium", "iExec", "Comexposium", "Good Feeling Communication", "AGAP2", "Divalto", "HubSpot", "Afnic, Eurid', 'NS Group", "Capgemini", "SEVANOVA l'agence crossmedia BtoB", "LEMON QUEEN", "SNCF Réseaux", "Eurogip", "Airemploi Espace Orientation", "Evoleen by Gecko", "ALLIANCE MEETING", "HAGER Group", "expressiongroupe.fr", "Lenno", "THE BLUE YELLOW", "UNESCO", "IRSN", "TALAN", "CWT Meetings & Events", "Irrijardin", "La Mondiale Europartner - AG2R LA MONDIALE", "ELIS", "IFP ENERGIES NOUVELLES", "SWPL", "We Factory & Co", "BPI France", "Association ÉVEIL - pour l'éveil des jeunes à la citoyenneté", "Digital Vision", "CESIN", "France Travail (Pole emploi)", "Doctolib", "VEGA INVESTMENT MANAGERS", "Agence Novabox", "Orange France", "Audiens", "Orange Grand Nord-Est", "Salons de l'Aveyron", "INRAE", "Délégation Unédic AGS (DUA)", "Groupe Findis", "EssilorLuxottica", "Le huitieme bar", "AGM Conseil", "COVÉA", "Les Publications commerciales", "LMEF", "SST Events Experiences", "ASPEC", "Crédit Agricole S.A", "Whyte and Mackay", "Lesaffre (Bio Springer)", "Bandai Namco", "Kim Hinsinger Event", "EBP", "Iris Production", "TotalÉnergies Renouvelables", "Inria", "iad international", "Le département des Hauts-de-Seine", "SPIDERVO", "acceo", "Afpa", "Thales Air Systems", "Polynome", "BABA OU PAS", "SST Events Levallois", "La nouvelle république", "Polepharma", "SNITEM", "Shop coiffure", "CJD", "WorldSkills France", "Carac", "AG2R LA MONDIALE", "Alptis", "METRO France", "Vanguard Asset Management Ltd", "Castorama - Groupe Kingfisher", "Transgourmet", "Amgen Inc.", "ALLIANCE", "Les Echos Le Parisien", "Sopra Steria", "ENGIE", "Groupe Scael", "Airbus SAS", "Limagrain", "Mutualité Française", "BOUYGUES CONSTRUCTION", "Lexis Nexis", "EDF", "Celside Insurance", "NORDEX", "pernod.com", "Strat&SI", "GAN PATRIMOINE", "PUY DU FOU", "VINCI Facilities Industrie Aquitaine", "WITH UP COM", "Henner", "Crédit Mutuel", "Groupe Audeo", "Ecole Supérieure Nationale de Police (Ministere interieur)", "Loxam", "Syndex", "Fasken", "Elkem Silicones", "JCdecaux", "Deutsche Bank AG", "Aromates", "Néologis", "ImpriFrance", "Vinci Autoroutes", "Carte Blanche Partenaires", "Union Financière de France", "Auditoire", "ATMO Occitanie", "AMORCE", "Stallergenes Greer", "Groupe Alliaserv", "VINCI ENERGIES IDF", "Allianz Global Corporate & Specialty (AGCS)", "Automobile Club de l'Ouest", "Union Bancaire Privée", "Crazyhits", "Avizio", "Caisse d'Epargne Ile-de-France", "Pompiers 13", "BASF France (division Agro)", "Néo-Soft", "EVENTIME", "Gifen", "SKEMA", "Roche France", "Les foliweb", "GL Event", "SAINT GOBAIN", "Groupe LIP", "Valiantys - Atlassian Platinum Partner", "Renault Group", "DEMATHIEU BARD", "Live! by GL Events", "INNOHA", "Sulzer", "General Mills France", "SODEBO", "Fondation du Camp des Milles", "Bolloré Transports & Logistics", "Le C.E.G", "Lamotte", "MOMA Events", "Romande Energie", "Edenred France", "Groupe Duret", "LeGratin.io", "SMA Groupe", "France Télévisions", "Insa Lyon", "Serf", "Ardian", "Caisse d'Epargne d'Auvergne et du Limousin", "OL Entreprises", "National Railway Company of Belgium", "Purple Flair", "AFD", "Best Western", "bricodepot.com", "Forsides", "Institut Choiseul", "Groupe Henner", "Ingeva", "SAVILLS", "Green2Green", "Centre National de la Fonction Publique Territoriale", "Nantes Métropole", "Mind", "Crédit Agricole Brie Picardie", "GIDES", "CLUB MED", "Expanscience", "JobTeaser", "CIC", "Apave", "Xplore Agency", "LittleBig Connection", "CRCC de Paris", "Social Builder", "ipeca-msae.fr", "APRR", "Aressy", "Sybert", "Cathay", "MonBuilding", "Axelys Santé", "Groupe Habitat en Région", "Ghanimé SARL", "EDHEC", "Français", "isea.fr", "MGEN", "Inrae", "B12 Consulting", "Santiane", "Visiativ", "Groupe Idea", "CEA - Commissariat à l'énergie atomique et aux énergies alternatives", "Colliers", "Digital Transformers", "TWOB EVENTS", "Assemblée Permanente des Chambres d'Agriculture A.P.C.A", "Scania FRANCE", "marquisecontents.com", "Carnot Ingénierie at Lyon", "Botte Fondations (VINCI Construction France)", "Ugip Assurances", "Paris La Defense Arena", "GLS SIEGE SOCIAL", "Market-inn", "ALLIANZ WORLDWIDE PARTNERS", "Fives", "Groupe TRSb", "IUT de Bayonne", "Magic Garden Agency", "Saagie", "Louvre Banque Privée", "Axa GIE / IM", "Valeo", "DS Restauration", "GIRO Inc", "Infomil", "DS RESTAURATION - FGR", "Lectra", "Amazon", "Ambassade de Hongrie", "Ayming", "GUY HOQUET L'IMMOBILIER", "Zoll", "KEOLIS", "Generali Innovation", "Fondation pour la Recherche Stratégique", "Paris Ile-de-France Capitale Economique", "ALTEN Spain", "Convergences", "IVY", "Groupe Beaumanoir", "DSO", "PUIG", "Valrhona", "Service d'infrastructure de la Défense", "Bartle", "groupe-beaumanoir.fr", "Karré", "Cartier", "Service Social Interentreprises", "Best Western Hotels", "Event'ually", "Force Réseau", "Groupe Pomona", "NGE", "Eurécia", "es-sense.biz", "Fondation France-Asie", "Formavision", "Micropole", "CNRS", "Altarea", "Immobilière 3F", "ALTAREA COGEDIM", "Elvinger Hoss", "T&S Group", "Omegapoint", "CCI France International", "Karénaé", "Cyrus Conseil", "EDILIANS", "CCI de Vaucluse", "Recos Machines", "SDIS 77", "Codifis", "Halifax Consulting", "Generali Concierge Services", "Le Hibou", "CNP ASSURANCES", "SG CIB", "ePack Hygiene", "Fondation FACE", "Events By ALC", "groupe-exp.com", "Harmonie Mutuelle", "Fiteco", "GLOBE", "Foncia", "KEDGE Business School", "Institut National du Travail, de l'Emploi et de la Formation Professionnelle", "Credit Agricole Centre France", "Aglaé Events", "Engie Vianeo", "EUROCHAM Chambre De Commerce Européenne En Côte D'Ivoire", "Deal4event", "Telemecanique Sensors", "Veolia Environnement", "Boxplanet", "Assemblée Nationale", "Centre Français des Fonds et Fondations", "Agence de l'eau Adour-Garonne", "BIOLOGIQUE RECHERCHE", "MSA Safety", "Pmt-Innovation", "Ailleursevents", "Ministère de la Culture", "Parc Astérix", "Capitalmind Investec", "DLPK", "Axa Juridica", "LYNRED", "Extra Brut Agency", "axa-juridica.com", "Egis Group", "Paris Basketball", "GLS", "CMA Nouvelle Aquitaine", "APRIL Group", "CARMILA", "Maddyness", "greater-paris-investment-agency.com", "Mairie de Vaulx-en-Velin", "SYNLAB France", "cbtw.tech", "LPA", "Groupe CréO", "Taxis Bleus", "EDF Renouvelables", "Groupe Acorus", "Bouygues Telecom Business – Distribution", "PRODIGIOUS", "Docaposte", "Tour de Bretagne", "Association France Invest", "Direction Generale de l'Aviation Civile", "Ircam Amplify", "Würth France", "Lagardère Travel Retail", "Fortuneo", "Cma-Idf", "Crédit Agricole Charente-Maritime Deux-Sèvres", "Conseil supérieur du notariat", "ALSO", "Axians", "Scape Chaïkana", "CGI", "Fédération Nationale du Crédit Agricole", "intradef.gouv.fr", "Sony Pictures", "CCI Seine-et-Marne", "MIGSO-PCUBED", "Bureau Veritas Group", "Agence Sensorielle", "B-Hive Engineering", "Seqens", "La Médicale", "L'Escalator", "lfdj.com", "Newclip Technics", "Organisme International de la Francophonie", "Ministère de l'intérieur", "Inserm", "Proya", "Igensia", "Apivia Macif Mutuelle", "Fédération Française de Gymnastique", "Harfang Evénéments", "Danone", "Volvo Car France", "Institut français de Grèce", "16com", "Lyreco", "CABEF", "Marquetis&Co", "CFF", "Agence Julie Joie", "MAIF", "EPOKA", "Spice Up", "Direction Générale de l'Administration et de la Fonction Publique", "Elevate", "SOCIÉTÉ GÉNÉRALE GROUPE", "Etablissement Français du Sang (EFS)", "Music Work", "Safran Transmission Systems", "Kiloutou Energie", "RATPgroup", "MipihSIB", "Union des Transports Publics et Ferroviaires", "CHRYSALIDE", "GREETS PARIS", "strategyclub.fr", "BCIMR", "Lacoste", "MBSM Rally", "Carif-Oref Occitanie", "Safran Passenger Innovations", "American Vintage", "CCI Auvergne-Rhône-Alpes", "Safran Electrical Power", "Safran Electronics & Defense", "SNCF réseaux"
+        ];
 
-    <label>Note globale de l’événement (1 à 5)</label>
-    <select>
-      <option disabled selected>Choisissez une note</option>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
+        let companiesData = companies.map((company, index) => ({
+            id: index + 1,
+            name: company,
+            url: '',
+            status: 'pending'
+        }));
 
-    <label>Les présentations étaient-elles claires ?</label>
-    <div class="radio-group">
-      <label><input type="radio" name="clarity"> Tout à fait d’accord</label>
-      <label><input type="radio" name="clarity"> D’accord</label>
-      <label><input type="radio" name="clarity"> Neutre</label>
-      <label><input type="radio" name="clarity"> Pas d’accord</label>
-      <label><input type="radio" name="clarity"> Pas du tout d’accord</label>
-    </div>
+        let filteredData = [...companiesData];
 
-    <label>Sessions les plus intéressantes ? (max 2)</label>
-    <div class="checkbox-group">
-      <label><input type="checkbox"> Présentation</label>
-      <label><input type="checkbox"> Démo</label>
-      <label><input type="checkbox"> Workshop</label>
-      <label><input type="checkbox"> Table ronde</label>
-      <label><input type="checkbox"> Q&A</label>
-    </div>
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            
+            filteredData.forEach((company, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${company.id}</td>
+                    <td>${company.name}</td>
+                    <td>
+                        <input type="text" class="url-input" value="${company.url}" 
+                               onchange="updateUrl(${company.id}, this.value)"
+                               placeholder="https://www.linkedin.com/company/...">
+                    </td>
+                    <td>
+                        <span class="status status-${company.status}">
+                            ${company.status === 'found' ? '✅ Trouvée' : 
+                              company.status === 'notfound' ? '❌ Non trouvée' : '⏳ En attente'}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="search-btn" onclick="generateUrl(${company.id})">🔗 Générer URL</button>
+                        <button class="search-btn" onclick="searchGoogle('${company.name.replace(/'/g, "\\'")}')">🔍 Google</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            updateStats();
+        }
 
-    <label>Niveau d’intérêt pour l’application ACME ?</label>
-    <div class="radio-group">
-      <label><input type="radio" name="interest"> Très intéressé(e)</label>
-      <label><input type="radio" name="interest"> Intéressé(e)</label>
-      <label><input type="radio" name="interest"> Moyen</label>
-      <label><input type="radio" name="interest"> Peu</label>
-      <label><input type="radio" name="interest"> Pas du tout</label>
-    </div>
+        function updateUrl(id, url) {
+            const company = companiesData.find(c => c.id === id);
+            if (company) {
+                company.url = url;
+                company.status = url ? 'found' : 'pending';
+                updateStats();
+            }
+        }
 
-    <label>Organisation de l’événement ?</label>
-    <div class="radio-group">
-      <label><input type="radio" name="orga"> Très satisfaisante</label>
-      <label><input type="radio" name="orga"> Satisfaisante</label>
-      <label><input type="radio" name="orga"> Neutre</label>
-      <label><input type="radio" name="orga"> Peu satisfaisante</label>
-      <label><input type="radio" name="orga"> Pas du tout satisfaisante</label>
-    </div>
+        function generateUrl(id) {
+            const company = companiesData.find(c => c.id === id);
+            if (company) {
+                let cleanName = company.name
+                    .toLowerCase()
+                    .replace(/[^\w\s-]/g, '')
+                    .replace(/\s+/g, '-')
+                    .replace(/--+/g, '-')
+                    .replace(/^-|-$/g, '');
+                
+                // Nettoyages spécifiques
+                cleanName = cleanName
+                    .replace(/groupe-/g, '')
+                    .replace(/-groupe/g, '')
+                    .replace(/-sas$/g, '')
+                    .replace(/-plc$/g, '')
+                    .replace(/-ltd$/g, '')
+                    .replace(/-inc$/g, '');
+                
+                const generatedUrl = `https://www.linkedin.com/company/${cleanName}`;
+                company.url = generatedUrl;
+                company.status = 'found';
+                renderTable();
+            }
+        }
 
-    <label>Recommanderiez-vous cet événement ?</label>
-    <div class="radio-group">
-      <label><input type="radio" name="recommend"> Oui</label>
-      <label><input type="radio" name="recommend"> Non</label>
-    </div>
+        function generateAllUrls() {
+            companiesData.forEach(company => {
+                if (!company.url) {
+                    generateUrl(company.id);
+                }
+            });
+        }
 
-    <label>Améliorations ?</label>
-    <input type="text" placeholder="Votre réponse">
+        function searchGoogle(companyName) {
+            const query = encodeURIComponent(`site:linkedin.com/company "${companyName}"`);
+            window.open(`https://www.google.com/search?q=${query}`, '_blank');
+        }
 
-    <label>Commentaires</label>
-    <textarea placeholder="Exprimez-vous librement..."></textarea>
+        function updateStats() {
+            const total = companiesData.length;
+            const found = companiesData.filter(c => c.status === 'found').length;
+            const pending = companiesData.filter(c => c.status === 'pending').length;
+            const progress = Math.round((found / total) * 100);
+            
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('foundCount').textContent = found;
+            document.getElementById('pendingCount').textContent = pending;
+            document.getElementById('progressPercent').textContent = progress + '%';
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
 
-    <button class="submit-button" type="button">Envoyer</button>
-  </form>
+        function exportToCSV() {
+            const headers = ['#', 'Nom de l\'entreprise', 'URL LinkedIn', 'Statut'];
+            const csvContent = [
+                headers.join(','),
+                ...companiesData.map(company => [
+                    company.id,
+                    `"${company.name}"`,
+                    `"${company.url}"`,
+                    company.status
+                ].join(','))
+            ].join('\n');
+            
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'linkedin_entreprises.csv';
+            link.click();
+        }
+
+        function copyFormulas() {
+            const formulas = `
+FORMULES EXCEL/GOOGLE SHEETS :
+
+1. Génération automatique d'URL :
+=CONCATENER("https://www.linkedin.com/company/"; SUBSTITUE(MINUSCULE(A2);" ";"-"))
+
+2. Vérification du statut :
+=SI(B2<>""; "Trouvée"; "En attente")
+
+3. Comptage des URLs trouvées :
+=NB.SI(C:C; "Trouvée")
+
+4. Pourcentage de progression :
+=NB.SI(C:C; "Trouvée")/NBVAL(A:A)*100
+            `;
+            
+            navigator.clipboard.writeText(formulas).then(() => {
+                alert('Formules copiées dans le presse-papiers !');
+            });
+        }
+
+        function resetAll() {
+            if (confirm('Êtes-vous sûr de vouloir réinitialiser toutes les données ?')) {
+                companiesData.forEach(company => {
+                    company.url = '';
+                    company.status = 'pending';
+                });
+                filteredData = [...companiesData];
+                renderTable();
+            }
+        }
+
+        // Fonction de recherche
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            filteredData = companiesData.filter(company => 
+                company.name.toLowerCase().includes(searchTerm)
+            );
+            renderTable();
+        });
+
+        // Initialisation
+        renderTable();
+    </script>
 </body>
 </html>
