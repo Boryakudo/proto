@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventdrive - Événements d'entreprise réinventés</title>
+    <style>
+        /* Base Styles - Inspired by Wix's clean aesthetic */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif; /* Common modern sans-serif */
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7; /* Light grey background, common on Wix */
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        header {
+            background-color: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow like Wix */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #216FEA; /* Vibrant blue for branding */
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #216FEA;
+        }
+
+        .cta-button {
+            background-color: #216FEA; /* Wix-style blue button */
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 50px; /* Rounded corners */
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            border: none; /* No border for modern look */
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #1a5ac7; /* Darker blue on hover */
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #216FEA, #4CAF50); /* Blue to green gradient, common modern trend */
+            color: #fff;
+            text-align: center;
+            padding: 120px 20px;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 4.2em; /* Large, impactful headline */
+            margin-bottom: 25px;
+            line-height: 1.1;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            max-width: 800px;
+            opacity: 0.9;
+        }
+
+        /* Sections Styling */
+        section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        section:nth-of-type(even) {
+            background-color: #fff; /* Alternate sections with white background */
+        }
+
+        section h2 {
+            font-size: 2.8em;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        section p.lead {
+            font-size: 1.4em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+            text-align: left;
+        }
+
+        .feature-item {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* More pronounced shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .feature-item h3 {
+            font-size: 1.8em;
+            color: #216FEA; /* Accent color for feature titles */
+            margin-bottom: 15px;
+        }
+
+        .feature-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-item ul li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #666;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .feature-item ul li::before {
+            content: '✓'; /* Checkmark icon */
+            color: #4CAF50; /* Green for success/check */
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .benefit {
+            font-weight: bold;
+            color: #216FEA;
+            margin-top: 20px;
+            display: block; /* Make it a block element for spacing */
+            font-size: 1.2em;
+        }
+
+        /* Tagline/Call to Action Section */
+        .cta-banner {
+            background-color: #333; /* Dark background for contrast */
+            color: #fff;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .cta-banner h2 {
+            color: #fff;
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .cta-banner p {
+            font-size: 1.6em;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #bbb;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #bbb;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide nav links on small screens for simplicity */
+            }
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            section h2 {
+                font-size: 2em;
+            }
+            section p.lead {
+                font-size: 1.1em;
+            }
+            .features-grid {
+                grid-template-columns: 1fr; /* Stack features on small screens */
+            }
+            .cta-banner h2 {
+                font-size: 2.5em;
+            }
+            .cta-banner p {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Eventdrive</a>
+                <div class="nav-links">
+                    <a href="#mission">Mission</a>
+                    <a href="#valeur">Valeur</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <a href="#" class="cta-button">Démonstration</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Professionnalisez votre gestion événementielle.</h1>
+            <p>Transformez la manière d’organiser vos événements d'entreprise en une expérience engageante, mesurable et alignée à vos objectifs.</p>
+            <a href="#" class="cta-button">Découvrir Eventdrive</a>
+        </section>
+
+        <section id="mission">
+            <div class="container">
+                <h2>Votre Expertise, Amplifiée.</h2>
+                <p class="lead">
+                    Eventdrive est un logiciel événementiel collaboratif conçu par des Event managers pour renforcer l'expertise de vos équipes communication.
+                </p>
+                <p class="lead" style="font-weight: bold; color: #216FEA;">
+                    Gagnez en autonomie pour déployer des programmes événementiels à grande échelle et en mesurer l'impact avec précision.
+                </p>
+            </div>
+        </section>
+
+        <section id="valeur">
+            <div class="container">
+                <h2>Libérez le Potentiel de vos Événements.</h2>
+                <p class="lead">Notre plateforme vous offre une maîtrise totale à chaque étape.</p>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h3>Designez</h3>
+                        <ul>
+                            <li>Concevez des supports digitaux de qualité professionnelle (UI)</li>
+                            <li>Amplifiez la promotion (ciblage, campagnes E-mail, SMS)</li>
+                        </ul>
+                        <span class="benefit">→ Maîtrise de l’image de marque</span>
+                    </div>
+
+                    <div class="feature-item">
+                        <h3>Pilotez</h3>
+                        <ul>
+                            <li>Centralisez et exploitez la donnée dans un CRM événementiel (suivi, historique, préférences)</li>
+                            <li>Orchestrez les parcours de l’inscription à la clôture (personnalisation, UX, interactivité)</li>
+                            <li>Optimisez la logistique : rooming, accueil, émargement, suivi</li>
+                            <li>Mesurez, analysez la performance et itérez</li>
+                        </ul>
+                        <span class="benefit">→ Amélioration de l’expérience de participation</span>
+                    </div>
+
+                    <div class="feature-item">
+                        <h3>Déployez</h3>
+                        <ul>
+                            <li>Standardisez vos process (cohérence avec modèles, rôles & permissions)</li>
+                            <li>Collaborez en équipe</li>
+                            <li>Dupliquez vos projets événementiels</li>
+                            <li>Déployez vos programmes événementiels de toute taille et format</li>
+                        </ul>
+                        <span class="benefit">→ Industrialisez vos processus</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-banner">
+            <div class="container">
+                <h2>Event game changer</h2>
+                <p>Prêt à transformer vos événements d'entreprise en expériences inoubliables et mesurables ?</p>
+                <a href="#" class="cta-button">Demander une démo</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Eventdrive. Tous droits réservés.</p>
+            <div>
+                <a href="#">Politique de confidentialité</a>
+                <a href="#">Conditions générales</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
