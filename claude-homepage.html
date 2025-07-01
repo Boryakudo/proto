@@ -40,12 +40,28 @@
             padding: 0 2rem;
         }
 
+        /* Modifications ici pour le logo et la signature */
+        .brand {
+            display: flex; /* Permet d'aligner le logo et la signature en colonne */
+            flex-direction: column;
+            align-items: flex-start; /* Aligne le texte à gauche */
+        }
+
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
             background: linear-gradient(45deg, #fff, #f0f8ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            line-height: 1; /* Réduit l'espace au-dessus et en dessous du texte */
+        }
+
+        .tagline-nav { /* Nouvelle classe pour la signature discrète */
+            font-size: 0.8rem; /* Plus petite que le logo */
+            color: rgba(255, 255, 255, 0.7); /* Plus discrète, légèrement transparente */
+            margin-top: 5px; /* Petit espace entre le logo et la signature */
+            text-transform: uppercase; /* Donne un côté "signature" */
+            letter-spacing: 0.05em; /* Un peu d'espacement entre les lettres */
         }
 
         .nav-links {
@@ -371,10 +387,12 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <nav class="nav">
-            <div class="logo">Eventdrive</div>
+            <div class="brand">
+                <div class="logo">Eventdrive</div>
+                <div class="tagline-nav">Event game changer</div>
+            </div>
             <ul class="nav-links">
                 <li><a href="#fonctionnalites">Fonctionnalités</a></li>
                 <li><a href="#tarifs">Tarifs</a></li>
@@ -385,11 +403,10 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1> Prêt à professionnalisez votre gestion événementielle 🔥</h1>
-            <p>Eventdrive est un logiciel collaboratif conçu par des Event managers. <strong>Notre mission ? </strong> Renforcer l'expertise des équipes communication en leur donnant la main sur la création de supports digitaux, l'analyse des données et la structuration des processus.</p>
+            <h1> Prêt à professionnaliser votre événementiel ? 🔥</h1>
+            <p>Eventdrive est un logiciel collaboratif conçu par des Event managers. **Notre mission ?** Renforcer l'expertise des équipes communication en leur donnant la main sur la création de supports digitaux, l'analyse des données et la structuration des processus.</p>
             <div class="tagline">Event Game Changer</div>
             <div class="cta-buttons">
                 <a href="#demo" class="cta-button">Commencer gratuitement</a>
@@ -398,13 +415,11 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features">
         <div class="container">
             <h2 class="section-title">Une approche complète de A à Z</h2>
             
             <div class="features-grid">
-                <!-- Feature 1: Designez -->
                 <div class="feature-card">
                     <div class="feature-icon">🎨</div>
                     <h3>Designez</h3>
@@ -416,7 +431,6 @@
                     <div class="benefit">→ Maîtrise de l'image de marque</div>
                 </div>
 
-                <!-- Feature 2: Pilotez -->
                 <div class="feature-card">
                     <div class="feature-icon">🎯</div>
                     <h3>Pilotez</h3>
@@ -429,7 +443,6 @@
                     <div class="benefit">→ Amélioration de l'expérience de participation</div>
                 </div>
 
-                <!-- Feature 3: Déployez -->
                 <div class="feature-card">
                     <div class="feature-icon">🚀</div>
                     <h3>Déployez</h3>
@@ -445,7 +458,6 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <h2>Vous souhaitez transformer la manière d'organiser vos événement ?</h2>
@@ -457,7 +469,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2025 Eventdrive. Event Game Changer. Tous droits réservés.</p>
