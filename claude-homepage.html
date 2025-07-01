@@ -149,26 +149,28 @@
 
         /* Styles pour l'effet extrude */
         .tagline-extrude {
-            font-size: 2.5rem; /* Taille plus grande pour l'effet */
-            font-weight: 800;
-            color: #fff; /* Couleur de base du texte */
-            margin-top: 3rem; /* Espacement après le paragraphe */
-            text-shadow: 
-                1px 1px 0 #5f2c81, 
-                2px 2px 0 #5f2c81, 
-                3px 3px 0 #5f2c81, 
-                4px 4px 0 #5f2c81, 
-                5px 5px 0 #5f2c81, 
-                6px 6px 0 #5f2c81, 
-                7px 7px 0 #5f2c81, 
-                8px 8px 0 #5f2c81, 
-                9px 9px 0 #5f2c81, 
-                10px 10px 0 #5f2c81; /* Ombre décalée pour l'effet 3D */
-            animation: fadeInUp 1s ease 0.4s both;
-            text-transform: uppercase; /* Donne de l'impact */
-            letter-spacing: 0.1em; /* Espacement pour la lisibilité */
-            display: inline-block; /* Pour que text-shadow fonctionne bien */
-        }
+    font-size: 2.5rem; /* Taille plus grande pour l'effet */
+    font-weight: 800;
+    color: #fff; /* Couleur de base du texte */
+    margin-top: 3rem; /* Espacement après le paragraphe */
+    text-shadow: 
+        1px 1px 0 #5f2c81, 
+        2px 2px 0 #5f2c81, 
+        3px 3px 0 #5f2c81, 
+        4px 4px 0 #5f2c81, 
+        5px 5px 0 #5f2c81, 
+        6px 6px 0 #5f2c81, 
+        7px 7px 0 #5f2c81, 
+        8px 8px 0 #5f2c81, 
+        9px 9px 0 #5f2c81, 
+        10px 10px 0 #5f2c81; /* Ombre décalée pour l'effet 3D */
+    animation: fadeInUp 1s ease 0.4s both;
+    text-transform: uppercase; /* Donne de l'impact */
+    letter-spacing: 0.1em; /* Espacement pour la lisibilité */
+    display: inline-block; /* Pour que text-shadow fonctionne bien */
+    /* Nouvelle propriété pour l'effet de biais */
+    transform: skewX(-10deg); /* Incline le texte de -10 degrés sur l'axe X */
+}
         @media (max-width: 768px) {
             .tagline-extrude {
                 font-size: 1.8rem; /* Ajustement pour les petits écrans */
@@ -417,7 +419,6 @@
         <nav class="nav">
             <div class="brand">
                 <div class="logo">Eventdrive</div>
-                <div class="tagline-nav">Event game changer</div> 
             </div>
             <ul class="nav-links">
                 <li><a href="#fonctionnalites">Fonctionnalités</a></li>
@@ -433,8 +434,6 @@
         <div class="hero-content">
             <h1> Prêt à professionnaliser votre événementiel ? 🔥</h1>
             <p>Eventdrive est un logiciel collaboratif conçu par des Event managers. <br>Notre mission ? Renforcer l'expertise des équipes communication en leur donnant la main sur la création de supports digitaux, l'analyse des données et la structuration des processus.</p>
-            
-            <div class="tagline-extrude">Event Game Changer</div> 
 
             <div class="cta-buttons">
                 <a href="#demo" class="cta-secondary">Video tour</a>
@@ -444,7 +443,8 @@
 
     <section class="features">
         <div class="container">
-            <h2 class="section-title">"Event game changer" - avec Eventdrive vous allez </h2>
+                        <div class="tagline-extrude">Event Game Changer</div> 
+            <h2 class="section-title">avec Eventdrive vous allez </h2>
             
             <div class="features-grid">
                 <div class="feature-card">
