@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventdrive - Event Game Changer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        /* Modifications ici pour le logo et la signature */
+        .brand {
+            display: flex; /* Permet d'aligner le logo et la signature en colonne */
+            flex-direction: column;
+            align-items: flex-start; /* Aligne le texte à gauche */
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fff, #f0f8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1; /* Réduit l'espace au-dessus et en dessous du texte */
+        }
+
+        /* Nouveaux styles pour la signature manuscrite */
+        .signature-logo {
+            font-family: 'Dancing Script', cursive; /* Application de la police manuscrite */
+            font-size: 1.2rem; /* Taille légèrement plus petite que le logo */
+            color: #FD6961; /* Couleur blanche, légèrement transparente */
+            margin-top: 5px; /* Petit espace entre le logo et la signature */
+            transform: skewX(-10deg); /* Inclinaison légère de 10 degrés */
+            line-height: 1; /* Assure un bon alignement */
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.08)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.06)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative; /* Nécessaire pour le positionnement absolu de la mascotte */
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #fff, #f0f8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        /* Styles pour l'effet extrude dans le hero */
+        .extrude-terms {
+            font-size: 1.5rem; /* Ajusté pour mieux s'intégrer au hero */
+            font-weight: 800;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 2.5rem; /* Espace sous le texte extrudé */
+            text-shadow:
+                3px 3px 0 rgba(255, 107, 107, 0.4),
+                6px 6px 0 rgba(255, 107, 107, 0.4),
+                9px 9px 0 rgba(255, 107, 107, 0.4),
+                12px 12px 0 rgba(255, 107, 107, 0.4); /* Ombre basée sur la couleur du cta-button:hover */
+            animation: fadeInUp 1s ease 0.4s both;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            transform: skewX(-20deg); /* Optionnel: incliner légèrement si désiré */
+        }
+        
+        /* Styles pour l'effet extrude du titre "Event Game Changer" */
+        .tagline-extrude {
+            font-size: 4rem; /* Taille plus grande pour l'effet */
+            font-weight: 800;
+            color: #fff; /* Couleur de base du texte */
+            margin-top: 3rem; /* Espacement après le paragraphe */
+            margin: 0 auto; /* <-- centré horizontalement */
+            text-align: center;
+            text-shadow: 
+                1px 1px 0 #5f2c81, 
+                2px 2px 0 #5f2c81, 
+                3px 3px 0 #5f2c81, 
+                4px 4px 0 #5f2c81, 
+                5px 5px 0 #5f2c81, 
+                6px 6px 0 #5f2c81, 
+                7px 7px 0 #5f2c81, 
+                8px 8px 0 #5f2c81, 
+                9px 9px 0 #5f2c81, 
+                10px 10px 0 #5f2c81,
+                11px 11px 0 #5f2c81, 
+                12px 12px 0 #5f2c81, 
+                13px 13px 0 #5f2c81, 
+                14px 14px 0 #5f2c81, 
+                15px 15px 0 #5f2c81, 
+                16px 16px 0 #5f2c81, 
+                17px 17px 0 #5f2c81; /* Ombre décalée pour l'effet 3D */
+            animation: fadeInUp 1s ease 0.4s both;
+            text-transform: uppercase; /* Donne de l'impact */
+            letter-spacing: 0.1em; /* Espacement pour la lisibilité */
+            display: block; /* Pour que text-shadow fonctionne bien */
+            /* Nouvelle propriété pour l'effet de biais */
+            transform: skewX(-20deg); /* Incline le texte de -20 degrés sur l'axe X */
+        }
+
+        /* Styles de la mascotte */
+        .hero-mascot {
+            position: absolute;
+            top: -20px; /* Ajustez selon vos préférences */
+            right: 0px; /* Ajustez selon vos préférences */
+            width: 150px; /* Taille de la mascotte */
+            height: auto;
+            transform: rotate(5deg); /* Légère rotation */
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); /* Ombre douce */
+            animation: float 3s ease-in-out infinite; /* Animation de flottement */
+            z-index: 1; /* Assurez-vous qu'elle est en dessous du contenu texte */
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(5deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+            100% { transform: translateY(0px) rotate(5deg); }
+        }
+
+        @media (max-width: 768px) {
+            .extrude-terms {
+                font-size: 0.7rem;
+                margin-bottom: 1.5rem;
+                text-shadow: 2px 2px 0 rgba(255, 107, 107, 0.4), 4px 4px 0 rgba(255, 107, 107, 0.4);
+            }
+            .tagline-extrude {
+                font-size: 0.7rem; /* Ajustement pour les petits écrans */
+                text-align: center;
+                text-shadow: 
+                    1px 1px 0 #5f2c81, 
+                    2px 2px 0 #5f2c81, 
+                    3px 3px 0 #5f2c81, 
+                    4px 4px 0 #5f2c81;
+            }
+            .hero-mascot { /* Ajustements pour les petits écrans */
+                width: 100px;
+                top: 0px;
+                right: 0px;
+            }
+            .hero-content {
+                padding-top: 2rem; /* Ajuster le padding pour éviter que la mascotte ne chevauche le contenu sur mobile */
+            }
+        }
+
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #2d3748;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--card-color), var(--card-color-alt));
+        }
+
+        .feature-card:nth-child(1) {
+            --card-color: #667eea;
+            --card-color-alt: #764ba2;
+        }
+
+        .feature-card:nth-child(2) {
+            --card-color: #f093fb;
+            --card-color-alt: #f5576c;
+        }
+
+        .feature-card:nth-child(3) {
+            --card-color: #4facfe;
+            --card-color-alt: #00f2fe;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--card-color), var(--card-color-alt));
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #4a5568;
+        }
+
+        .feature-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--card-color);
+            font-weight: bold;
+        }
+
+        .benefit {
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            color: #2d3748;
+            border-left: 4px solid var(--card-color);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            color: #2d3748;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .signature-logo { /* Ajustement pour les petits écrans */
+                font-size: 1rem;
+            }
+        }
+
+        /* Subtle animations */
+        .feature-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="brand">
+                <div class="logo">Eventdrive</div>
+                <div class="signature-logo">Event game changer</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+                <li><a href="#tarifs">Tarifs</a></li>
+                <li><a href="#ressources">Ressources</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#demo" class="cta-button">Demander une démo</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <img src="https://boryakudo.github.io/proto/badgy.png" alt="Mascotte Badgy" class="hero-mascot">
+            
+            <h1> Prêt à professionnaliser votre événementiel ? 🔥</h1>
+            <p>Event designer, Eventdrive est un logiciel collaboratif qui vous donne la main sur la création de supports digitaux, l'analyse des données de participation et la gestion des processus événementiels.</p>
+
+            <div class="extrude-terms">Designez &nbsp;&nbsp;&nbsp; Pilotez &nbsp;&nbsp;&nbsp; Déployez</div>
+
+            <div class="cta-buttons">
+                <a href="#demo" class="cta-secondary">Video tour</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div style="text-align: center;">
+                <div class="tagline-extrude">Event Game Changer</div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Designer</h3>
+                    <ul>
+                        <li>Concevez des supports digitaux de qualité professionnelle</li>
+                        <li>Amplifiez la promotion (ciblage, campagnes E-mail, SMS)</li>
+                        <li>Créez des expériences visuelles engageantes</li>
+                    </ul>
+                    <div class="benefit">→ Maîtrise de l'image de marque</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Piloter</h3>
+                    <ul>
+                        <li>Centralisez et exploitez la donnée dans un CRM événementiel</li>
+                        <li>Orchestrez les parcours de l'inscription à la clôture</li>
+                        <li>Optimisez la logistique : rooming, accueil, émargement</li>
+                        <li>Mesurez, analysez la performance et itérez</li>
+                    </ul>
+                    <div class="benefit">→ Amélioration de l'expérience de participation</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Déployer</h3>
+                    <ul>
+                        <li>Standardisez vos process avec des modèles</li>
+                        <li>Collaborez efficacement en équipe</li>
+                        <li>Définissez les rôles et permissions de chacun</li>
+                        <li>Dupliquez vos projets événementiels</li>
+                        <li>Gérez tous formats et tailles d'événements</li>
+                    </ul>
+                    <div class="benefit">→ Industrialisez vos processus</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Vous souhaitez transformer la manière d'organiser vos événement ?</h2>
+            <p>Rejoignez les équipes communication qui ont choisi l'autonomie et la performance. Des équipes plus expertes, des événements plus impactants, des résultats mesurables.</p>
+            <div class="cta-buttons">
+                <a href="#demo" class="cta-button">Démarrer maintenant</a>
+                <a href="#contact" class="cta-secondary">Parler à un expert</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Eventdrive. Event Game Changer. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling pour les liens d'ancrage
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer les éléments à animer
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
