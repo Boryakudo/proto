@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventdrive - Event Game Changer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -56,13 +57,16 @@
             line-height: 1; /* Réduit l'espace au-dessus et en dessous du texte */
         }
 
-        .tagline-nav { /* Nouvelle classe pour la signature discrète */
-            font-size: 0.8rem; /* Plus petite que le logo */
-            color: rgba(255, 255, 255, 0.7); /* Plus discrète, légèrement transparente */
+        /* Nouveaux styles pour la signature manuscrite */
+        .signature-logo {
+            font-family: 'Dancing Script', cursive; /* Application de la police manuscrite */
+            font-size: 1.2rem; /* Taille légèrement plus petite que le logo */
+            color: rgba(255, 255, 255, 0.9); /* Couleur blanche, légèrement transparente */
             margin-top: 5px; /* Petit espace entre le logo et la signature */
-            text-transform: uppercase; /* Donne un côté "signature" */
-            letter-spacing: 0.05em; /* Un peu d'espacement entre les lettres */
+            transform: skewX(-10deg); /* Inclinaison légère de 10 degrés */
+            line-height: 1; /* Assure un bon alignement */
         }
+
 
         .nav-links {
             display: flex;
@@ -161,7 +165,7 @@
                 12px 12px 0 rgba(255, 107, 107, 0.4); /* Ombre basée sur la couleur du cta-button:hover */
             animation: fadeInUp 1s ease 0.4s both;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.05em;
             display: block;
             transform: skewX(-20deg); /* Optionnel: incliner légèrement si désiré */
         }
@@ -435,6 +439,10 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .signature-logo { /* Ajustement pour les petits écrans */
+                font-size: 1rem;
+            }
         }
 
         /* Subtle animations */
@@ -454,6 +462,7 @@
         <nav class="nav">
             <div class="brand">
                 <div class="logo">Eventdrive</div>
+                <div class="signature-logo">Event game changer</div>
             </div>
             <ul class="nav-links">
                 <li><a href="#fonctionnalites">Fonctionnalités</a></li>
@@ -470,7 +479,7 @@
             <h1> Prêt à professionnaliser votre événementiel ? 🔥</h1>
             <p>Event designer, Eventdrive est un logiciel collaboratif qui vous donne la main sur la création de supports digitaux, l'analyse des données de participationd et la gestion des processus événementiels.</p>
 
-            <div class="extrude-terms">Designez &nbsp;&nbsp;&nbsp;   Pilotez &nbsp;&nbsp;&nbsp;   Déployez</div>
+            <div class="extrude-terms">Designez &nbsp;&nbsp;&nbsp; Pilotez &nbsp;&nbsp;&nbsp; Déployez</div>
 
             <div class="cta-buttons">
                 <a href="#demo" class="cta-secondary">Video tour</a>
