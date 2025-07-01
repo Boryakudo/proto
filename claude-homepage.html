@@ -42,9 +42,9 @@
 
         /* Modifications ici pour le logo et la signature */
         .brand {
-            display: flex;
+            display: flex; /* Permet d'aligner le logo et la signature en colonne */
             flex-direction: column;
-            align-items: flex-start;
+            align-items: flex-start; /* Aligne le texte à gauche */
         }
 
         .logo {
@@ -53,15 +53,15 @@
             background: linear-gradient(45deg, #fff, #f0f8ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            line-height: 1;
+            line-height: 1; /* Réduit l'espace au-dessus et en dessous du texte */
         }
 
-        .tagline-nav {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 5px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+        .tagline-nav { /* Nouvelle classe pour la signature discrète */
+            font-size: 0.8rem; /* Plus petite que le logo */
+            color: rgba(255, 255, 255, 0.7); /* Plus discrète, légèrement transparente */
+            margin-top: 5px; /* Petit espace entre le logo et la signature */
+            text-transform: uppercase; /* Donne un côté "signature" */
+            letter-spacing: 0.05em; /* Un peu d'espacement entre les lettres */
         }
 
         .nav-links {
@@ -149,41 +149,38 @@
 
         /* Styles pour l'effet extrude */
         .tagline-extrude {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #fff;
-            margin-top: 3rem;
-            /* Correction pour le centrage */
-            display: block; /* S'assure que l'élément prend sa propre ligne */
-            width: fit-content; /* Permet à l'élément de n'être que la largeur de son contenu */
-            margin-left: auto; /* Centre l'élément */
-            margin-right: auto; /* Centre l'élément */
-            
-            text-shadow: 
-                1px 1px 0 #5f2c81, 
-                2px 2px 0 #5f2c81, 
-                3px 3px 0 #5f2c81, 
-                4px 4px 0 #5f2c81, 
-                5px 5px 0 #5f2c81, 
-                6px 6px 0 #5f2c81, 
-                7px 7px 0 #5f2c81, 
-                8px 8px 0 #5f2c81, 
-                9px 9px 0 #5f2c81, 
-                10px 10px 0 #5f2c81;
-            animation: fadeInUp 1s ease 0.4s both;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transform: skewX(-20deg); /* Incline le texte */
-        }
+    font-size: 2.5rem; /* Taille plus grande pour l'effet */
+    font-weight: 800;
+    color: #fff; /* Couleur de base du texte */
+    margin-top: 3rem; /* Espacement après le paragraphe */
+    text-align: center;
+    text-shadow: 
+        1px 1px 0 #5f2c81, 
+        2px 2px 0 #5f2c81, 
+        3px 3px 0 #5f2c81, 
+        4px 4px 0 #5f2c81, 
+        5px 5px 0 #5f2c81, 
+        6px 6px 0 #5f2c81, 
+        7px 7px 0 #5f2c81, 
+        8px 8px 0 #5f2c81, 
+        9px 9px 0 #5f2c81, 
+        10px 10px 0 #5f2c81; /* Ombre décalée pour l'effet 3D */
+    animation: fadeInUp 1s ease 0.4s both;
+    text-transform: uppercase; /* Donne de l'impact */
+    letter-spacing: 0.1em; /* Espacement pour la lisibilité */
+    display: inline-block; /* Pour que text-shadow fonctionne bien */
+    /* Nouvelle propriété pour l'effet de biais */
+    transform: skewX(-20deg); /* Incline le texte de -20 degrés sur l'axe X */
+}
         @media (max-width: 768px) {
             .tagline-extrude {
-                font-size: 1.8rem;
+                font-size: 1.8rem; /* Ajustement pour les petits écrans */
+                text-align: center;
                 text-shadow: 
                     1px 1px 0 #5f2c81, 
                     2px 2px 0 #5f2c81, 
                     3px 3px 0 #5f2c81, 
                     4px 4px 0 #5f2c81;
-                transform: skewX(-10deg);
             }
         }
 
@@ -192,7 +189,6 @@
         .features {
             padding: 6rem 2rem;
             background: #f8fafc;
-            text-align: center; /* Ajouté pour centrer les éléments à l'intérieur */
         }
 
         .container {
@@ -425,7 +421,6 @@
         <nav class="nav">
             <div class="brand">
                 <div class="logo">Eventdrive</div>
-                <div class="tagline-nav">Event game changer</div>
             </div>
             <ul class="nav-links">
                 <li><a href="#fonctionnalites">Fonctionnalités</a></li>
@@ -443,3 +438,107 @@
             <p>Eventdrive est un logiciel collaboratif conçu par des Event managers. <br>Notre mission ? Renforcer l'expertise des équipes communication en leur donnant la main sur la création de supports digitaux, l'analyse des données et la structuration des processus.</p>
 
             <div class="cta-buttons">
+                <a href="#demo" class="cta-secondary">Video tour</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+                        <div class="tagline-extrude">Event Game Changer</div> 
+            <h2 class="section-title">avec Eventdrive vous allez </h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Designer</h3>
+                    <ul>
+                        <li>Concevez des supports digitaux de qualité professionnelle</li>
+                        <li>Amplifiez la promotion (ciblage, campagnes E-mail, SMS)</li>
+                        <li>Créez des expériences visuelles engageantes</li>
+                    </ul>
+                    <div class="benefit">→ Maîtrise de l'image de marque</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Piloter</h3>
+                    <ul>
+                        <li>Centralisez et exploitez la donnée dans un CRM événementiel</li>
+                        <li>Orchestrez les parcours de l'inscription à la clôture</li>
+                        <li>Optimisez la logistique : rooming, accueil, émargement</li>
+                        <li>Mesurez, analysez la performance et itérez</li>
+                    </ul>
+                    <div class="benefit">→ Amélioration de l'expérience de participation</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Déployer</h3>
+                    <ul>
+                        <li>Standardisez vos process avec des modèles</li>
+                        <li>Collaborez efficacement en équipe</li>
+                        <li>Définissez les rôles et permissions de chacun</li>
+                        <li>Dupliquez vos projets événementiels</li>
+                        <li>Gérez tous formats et tailles d'événements</li>
+                    </ul>
+                    <div class="benefit">→ Industrialisez vos processus</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Vous souhaitez transformer la manière d'organiser vos événement ?</h2>
+            <p>Rejoignez les équipes communication qui ont choisi l'autonomie et la performance. Des équipes plus expertes, des événements plus impactants, des résultats mesurables.</p>
+            <div class="cta-buttons">
+                <a href="#demo" class="cta-button">Démarrer maintenant</a>
+                <a href="#contact" class="cta-secondary">Parler à un expert</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Eventdrive. Event Game Changer. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling pour les liens d'ancrage
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer les éléments à animer
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
