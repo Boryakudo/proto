@@ -203,7 +203,7 @@
             transform: skewX(-20deg); /* Incline le texte de -20 degrés sur l'axe X */
         }
 
-        /* Styles de la mascotte */
+        /* Styles de la mascotte dans le hero (en bas à gauche) */
         .hero-mascot {
             position: absolute;
             bottom: 0px; /* Position en bas */
@@ -214,6 +214,16 @@
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); /* Ombre douce */
             animation: float 3s ease-in-out infinite; /* Animation de flottement */
             z-index: 1; /* Assurez-vous qu'elle est en dessous du contenu texte */
+        }
+
+        /* Nouveaux styles pour la mascotte sous Event Game Changer */
+        .tagline-image {
+            display: block; /* Pour centrer l'image */
+            margin: 20px auto 40px auto; /* Marge au-dessus et en-dessous, et centrage */
+            max-width: 80%; /* Pour la réactivité */
+            height: auto;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2)); /* Ombre douce */
+            animation: fadeInUp 1s ease 0.6s both; /* Animation d'apparition */
         }
 
         @keyframes float {
@@ -244,6 +254,10 @@
             }
             .hero-content {
                 padding-top: 2rem; /* Ajuster le padding pour éviter que la mascotte ne chevauche le contenu sur mobile */
+            }
+            .tagline-image {
+                margin: 15px auto 30px auto; /* Ajustement des marges pour mobile */
+                max-width: 90%;
             }
         }
 
@@ -488,6 +502,7 @@
         <nav class="nav">
             <div class="brand">
                 <div class="logo">Eventdrive</div>
+                <div class="signature-logo">Event game changer</div>
             </div>
             <ul class="nav-links">
                 <li><a href="#fonctionnalites">Fonctionnalités</a></li>
@@ -501,7 +516,7 @@
 
     <section class="hero">
         <div class="hero-content">
-            <img src="https://boryakudo.github.io/proto/badgy2.png" alt="Mascotte Badgy" class="hero-mascot">
+            <img src="https://boryakudo.github.io/proto/badgy.png" alt="Mascotte Badgy" class="hero-mascot">
             
             <h1> Prêt à professionnaliser votre événementiel ? 🔥</h1>
             <p>Event manager… gagnez en autonomie ! Créé par des pro de l’industrie, Eventdrive est un logiciel collaboratif qui vous donne la main sur la création des supports digitaux, les données et les processus événementiels.</p>
@@ -518,6 +533,7 @@
         <div class="container">
             <div style="text-align: center;">
                 <div class="tagline-extrude">Event Game Changer</div>
+                <img src="https://boryakudo.github.io/proto/badgy-ordi2.png" alt="Mascotte Badgy avec ordinateur" class="tagline-image">
             </div>
             
             <div class="features-grid">
